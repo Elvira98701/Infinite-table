@@ -17,7 +17,9 @@ export interface TableRow {
   linkedin?: string;
 }
 
-export type TableHeaders = string[];
+export interface TableHeaders {
+  columns: string[];
+}
 
 export interface ApiTableResponse {
   data: TableRow[];

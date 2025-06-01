@@ -68,7 +68,6 @@ export const Form = ({ className }: FormProps) => {
               id={`fields.${index}.value`}
               type="text"
               className="border px-2 py-1 rounded-md flex-grow bg-background"
-              required
             />
             {fields.length > 5 && (
               <Button
@@ -82,7 +81,7 @@ export const Form = ({ className }: FormProps) => {
               </Button>
             )}
             {errors.fields?.[index]?.value && (
-              <p className="text-red-600 text-sm absolute right-5 bottom-1/2 bg-background border rounded-xl py-2 px-4">
+              <p className="text-red-600 text-sm absolute right-5 bottom-1/3 bg-background border rounded-xl py-2 px-4">
                 {errors.fields[index].value?.message}
               </p>
             )}

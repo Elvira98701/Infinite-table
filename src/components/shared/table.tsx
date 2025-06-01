@@ -26,14 +26,15 @@ export const Table = memo(
       <table className={cn("min-w-full", className)}>
         <thead>
           <tr className="bg-primary text-background">
-            {allKeys?.map((key, index) => (
+            {allKeys?.columns.map((key, index) => (
               <th
                 key={key}
                 className={cn(
                   "px-4 py-4 text-left text-sm font-medium border-r",
                   {
                     "rounded-tl-2xl": index === 0,
-                    "rounded-tr-2xl border-none": index === allKeys.length - 1,
+                    "rounded-tr-2xl border-none":
+                      index === allKeys.columns.length - 1,
                   }
                 )}
               >
@@ -51,7 +52,7 @@ export const Table = memo(
 
               return (
                 <tr key={row.id} ref={ref} className="border-b">
-                  {allKeys?.map((key) => (
+                  {allKeys?.columns.map((key) => (
                     <td key={key} className="px-4 py-2 text-sm">
                       {row[key as keyof TableRow] ?? "-"}
                     </td>
