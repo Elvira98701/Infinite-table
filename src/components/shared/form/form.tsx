@@ -56,33 +56,35 @@ export const Form = ({ className }: FormProps) => {
     <div className={cn("", className)}>
       <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-2">
         {fields.map((field, index) => (
-          <div key={field.id} className="flex items-center gap-2 relative">
-            <Label
-              className="min-w-24 font-bold"
-              htmlFor={`fields.${index}.value`}
-            >
-              {field.key}
-            </Label>
-            <Input
-              {...register(`fields.${index}.value` as const)}
-              id={`fields.${index}.value`}
-              type="text"
-              className="border px-2 py-1 rounded-md flex-grow bg-background"
-            />
-            {fields.length > 5 && (
-              <Button
-                type="button"
-                onClick={() => remove(index)}
-                className="text-red-500 font-bold"
-                variant="outline"
-                size="icon"
+          <div key={field.id}>
+            <div className="flex items-center gap-2 mb-2">
+              <Label
+                className="min-w-24 font-bold"
+                htmlFor={`fields.${index}.value`}
               >
-                <X />
-              </Button>
-            )}
+                {field.key}
+              </Label>
+              <Input
+                {...register(`fields.${index}.value` as const)}
+                id={`fields.${index}.value`}
+                type="text"
+                className="border py-1 rounded-md flex-grow bg-background"
+              />
+              {fields.length > 5 && (
+                <Button
+                  type="button"
+                  onClick={() => remove(index)}
+                  className="text-red-500 font-bold"
+                  variant="outline"
+                  size="icon"
+                >
+                  <X />
+                </Button>
+              )}
+            </div>
             {errors.fields?.[index]?.value && (
-              <p className="text-red-600 text-sm absolute right-5 bottom-1/3 bg-background border rounded-xl py-2 px-4">
-                {errors.fields[index].value?.message}
+              <p className="text-red-600 text-sm">
+                {errors.fields[index].value?.message} *
               </p>
             )}
           </div>
