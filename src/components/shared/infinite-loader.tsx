@@ -22,8 +22,6 @@ export const InfiniteLoader = () => {
     getNextPageParam: (lastPage) => lastPage.next,
   });
 
-  console.log(data);
-
   const lastRowRef = useCallback(
     (node: HTMLTableRowElement | null) => {
       if (isFetchingNextPage) return;
