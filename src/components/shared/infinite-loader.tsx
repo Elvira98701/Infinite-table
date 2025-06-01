@@ -19,10 +19,10 @@ export const InfiniteLoader = () => {
     queryKey: ["infiniteTable"],
     queryFn: fetchTableData,
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      return lastPage.data.length === 0 ? undefined : allPages.length + 1;
-    },
+    getNextPageParam: (lastPage) => lastPage.next,
   });
+
+  console.log(data);
 
   const lastRowRef = useCallback(
     (node: HTMLTableRowElement | null) => {
@@ -48,7 +48,7 @@ export const InfiniteLoader = () => {
   ) : status === "error" ? (
     <p className="text-red-600">Error: {error.message}</p>
   ) : (
-    <div className="w-full overflow-x-auto">
+    <div className="custom-scrollbar w-full overflow-x-auto">
       <Table tableData={data} lastRowRef={lastRowRef} />
       {isFetchingNextPage && <p className="text-center py-3">Loading...</p>}
     </div>

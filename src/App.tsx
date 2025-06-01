@@ -1,11 +1,15 @@
-import { Container, InfiniteLoader } from "@/components/shared";
+import { Container, Form, InfiniteLoader } from "@/components/shared";
 
 export const App = () => {
   return (
     <main>
-      <section className="py-10 ">
+      <section className="py-10">
         <Container className="min-h-screen">
-          <h1 className="font-bold mb-5">Dynamic Data Table</h1>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-5">
+            <h1 className="font-bold flex-1">Dynamic Data Table</h1>
+            <Form className="max-w-2xl flex-2/3" />
+          </div>
+
           <InfiniteLoader />
         </Container>
       </section>

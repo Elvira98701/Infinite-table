@@ -21,3 +21,9 @@ export const fetchHeaders = async (): Promise<TableHeaders> => {
 
   return data;
 };
+
+export const sendFormData = async (tableData: Record<string, string>) => {
+  const { data } = await api.post("/table", tableData);
+
+  return data;
+};
